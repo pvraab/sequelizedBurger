@@ -3,9 +3,13 @@ $(function() {
   $(".dropdown-toggle").dropdown();
 
   $("#customerMenu").on("click", ".dropdown-item", function() {
-    console.log("Dropdown");
-    console.log($(this));
-    console.log($(this).html());
+    // console.log("Dropdown");
+    // console.log($(this));
+    // console.log($(this).html());
+    // console.log($(this).data("id"));
+    var id = $(this).data("id");
+    localStorage.clear();
+    localStorage.setItem("id", id);
     $("#customerSelected").val($(this).html());
   });
 
@@ -29,6 +33,25 @@ $(function() {
       data: newDevouredState
     }).then(function() {
       console.log("Changed devoured to", newDevoured);
+
+      // Create customer burger row
+      var cid = localStorage.getItem("id");
+      console.log("In put route");
+      console.log(cid);
+      var newCB = {
+        burgerId: id,
+        customerId: cid
+      };
+      $.post("/api/customers/burgers", newCB, function(data) {
+        if (data) {
+          console.log("Added a new customer burger");
+          // Reload the page to get the updated list
+          location.reload();
+        } else {
+          alert("Did not work");
+        }
+      });
+  
       // Reload the page to get the updated list
       location.reload();
     });

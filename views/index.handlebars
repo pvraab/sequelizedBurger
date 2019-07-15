@@ -34,7 +34,7 @@
             </button>
             <div class="dropdown-menu" id="customerMenu" aria-labelledby="dropdownMenuButton">
               {{#each customers}}
-              <a class="dropdown-item" href="#">{{name}}</a>
+              <a class="dropdown-item" data-id={{id}} href="#">{{name}}</a>
               {{/each}}
               <!-- Text fields for customer -->
             </div>
@@ -58,6 +58,16 @@
 
           </div>
         </div>
+
+        <div class="card-footer">
+          <h6>Customer ID - Burger ID</h6>
+          <ul class="card-text">
+            {{#each customersburgers}}
+            <li>{{customerId}} - {{burgerId}}</li>
+            {{/each}}
+          </ul>
+        </div>
+
       </div>
 
       <div class="card">

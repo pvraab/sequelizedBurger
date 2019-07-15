@@ -20,12 +20,15 @@ module.exports = function(app) {
     console.log("Get index");
     db.burgers.findAll({}).then(function(dbBurgers) {
       db.customers.findAll({}).then(function(dbCustomers) {
-        var hbsObject = {
-          burgers: dbBurgers,
-          customers: dbCustomers
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+        db.customers_burgers.findAll({}).then(function(dbCustomersBurgers) {
+          var hbsObject = {
+            burgers: dbBurgers,
+            customers: dbCustomers,
+            customersburgers: dbCustomersBurgers
+          };
+          // console.log(hbsObject);
+          res.render("index", hbsObject);
+        });
       });
     });
   });
