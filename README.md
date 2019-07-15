@@ -1,51 +1,57 @@
-# sequelizedBurger
-
 # Burger 2: The Sequel
 
 ### Overview
 
-This homework assignment is **optional**.
+This app provides a burger eating logger with MySQL, Node, Express, Handlebars and a sequelize ORM. Following the MVC design pattern; I used Node and a sequelize ORM to query a MySQL database and route data in the app. Handlebars is used to generate the HTML.
 
-In this assignment, you're going to Sequelize the `Burger` app you made last unit. We've split this exercise into three different tiers, all with different tasks and expectations. Finish whichever tier will provide you with the most reasonable challenge.
+### GitHub Access
 
-### Before you Begin
+- [Source code repository](<https://github.com/pvraab/sequelizedBurger>)
+- [Application URL](<https://pvraab-sequelizeburger.herokuapp.com/>) - Hosted on Heroku so we can run the Express server and use the JawsDB MySQL addon.
 
-1. Create a new folder called `sequelizedBurger`
-2. Copy the contents of your completed assignment from last unit.
-   - Remove the older git connection with `rm -R .git`.
-   - Then connect this folder with a new github repo.
-3. Run `sequelize init` to create the necessary files.
-4. **Note**: If for any reason you don't have a finished assignment for last unit, no problem. Message the instructor, who will provide you will a skeleton file to work of for this unit.
+### Detailed Functionality
 
-#### Tier 1: Sequelized! (Basic to Moderate)
+- Consume Grilled Beef Disks! is a restaurant app that lets users input the names of burgers they'd like to eat.
+- Whenever a user submits a burger's name, the app will display the burger on the left side of the page -- waiting to be devoured.
+- Each burger in the waiting area also has a `Eat It!` button. When the user clicks it, the burger will move to the right side of the page.
+- There is also a `Delete!` button for deleting an entry from the screen and a `Return!` button to move it from the right of the screen back to the left side..
+- The app stores every burger in a database, whether devoured or not.
 
-- Remove all references to your vanilla MySQL queries and replace them with Sequelize queries.
-- That means:
-  - Replacing your MySQL `Burger` model with a Sequelized equivalent.
-    - Don't forget to edit the model and initial migration file to make the burger's devoured field carry a default value of false -- otherwise you might encounter bugs.
-      - There's no option to include that default in the command line, so you'll need to open up your editor to make this change.
-    - Don't forget to sync the models!
-    - Edit your new `config.json` file to include your database configurations. Place your JawsDB details in the `production` property of your json file; the details of your local database go in the `developer` property.
-    - Remove your old ORM file, as well as any references to it in `burgers_controller.js`. Replace those references with Sequelize's ORM methods.
-- When you finish, your site should function just like your last one:
-  ![1-Sequelized](C:/Users/Paul/BootCamp/GitLab/UDEN201903FSF2/Class-Content/15-sequelize/02-Homework/Instructions/Images/1-Sequelized.jpg)
+#### MySQL Database Setup
 
-#### Tier 2: Customer Associations (Challenge)
+- Database called `sequelize_burgers_db`.
+- Use a `burgers` table with these fields:
+  - **id**: an auto incrementing int that serves as the primary key.
+  - **burgerName**: a string.
+  - **isDevoured**: a boolean.
 
-- Add in a Customer association to the project. This will involve creating at least one new Customer model and connecting it with your Burger model.
+#### Application Design
 
-- What kind of association you would like to use is up to you. Does a Customer have one Burger? Many Burgers?
+- A `config.json` file inside `config` directory specifies the database connection parameters.
+- The db directory contains a schema.sql to create the database and a seeds.sql file to put data in the tables. 
+- The models directory contains the JS files to define the database tables using sequelize.
+- The public directory is the static directory to define the CSS and JS for use by the Handlebars views and layouts.
+- The routes directories contain the JS files defining the API and HTML routes for the app.
+- The views directory contains the Handlebars views and layouts for the app.
+- server.js is the main node.js code for the app. Uses Express to define the server.
 
-- For example, you could make a site that logs the name of which Customer ate which Burger, where each Customer only gets one Burger. If you can't think of another type of association, try this one!
+------
 
-  ![3-Associated](C:/Users/Paul/BootCamp/GitLab/UDEN201903FSF2/Class-Content/15-sequelize/02-Homework/Instructions/Images/3-Associated.jpg)
+### Technologies Used
 
-- If you do go select this tier, you must edit the handlebars files and CSS stylesheets to implement some sort of additional feature to the site. We don't want you to just connect two models and submit your project. Make your site do something relevant to this association.
+- JavaScript
+- jQuery
+- Express
+- AJAX
+- npm package path
+- BootStrap
+- HandleBars
+- MySQL
+- Sequelize ORM
+- Heroku
+- Node.js
+- MVC Design Pattern
 
-#### Bonus! (Challenge)
+### Portfolio
 
-- Add validations to your models where:
-  - A burger's name cannot be null
-  - A burger's devoured status is false by default
-  - A Customer's name cannot be null
-- Order the Burgers you send back to the user in alphabetical order using the Sequelize "order" option.
+Click on my Portfolio at my portfolio page at: <https://pvraab.github.io/RaabPortfolio/> to see the link to this app.
