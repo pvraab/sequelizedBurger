@@ -1,0 +1,64 @@
+<div class="container logo">
+  <img src="/assets/images/BigBurger.png" class="img-fluid img-rounded center"
+    alt="http://clipart-library.com/data_images/149301.png" width=200 height=200>
+  <h1 class="text-center">Consume Grilled Beef Disks!</h1>
+</div>
+
+<div id="wrapper">
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="card-group">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Burgers to Eat!</h5>
+
+          <ul class="card-text">
+            {{#each burgers}}
+            {{!-- <li>{{id}}</li> --}}
+            {{#unless isDevoured}}
+            {{> burgers/burger-block}}
+            {{/unless}}
+            {{/each}}
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" id="add-burger-text">Add a Burger</h5>
+          <div class="card-text">
+
+            <form class="create-form">
+              <div class="form-group">
+                <label for="burgerAdd"></label>
+                <input type="text" id="burgerAdd" name="burgerName">
+              </div>
+              <button class="btn btn-sm btn-danger" type="submit">Submit</button>
+              <h6>Create a Burger You Would Like to Eat!</h6>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Burgers you Ate!</h5>
+
+          <ul class="card-text">
+            {{#each burgers}}
+            {{#if isDevoured}}
+            {{> burgers/burger-block}}
+            {{/if}}
+            {{/each}}
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
