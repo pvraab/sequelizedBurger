@@ -10,7 +10,6 @@ var db = require("../models");
 // ===============================================================================
 
 module.exports = function(app) {
-
   // HTML GET Requests
   // Below code handles when users "visit" a page.
   // In each of the below cases the user is shown an HTML page of content
@@ -20,13 +19,14 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     console.log("Get index");
     db.burgers.findAll({}).then(function(dbBurgers) {
-      var hbsObject = {
-        burgers: dbBurgers
-      };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
+      db.customers.findAll({}).then(function(dbCustomers) {
+        var hbsObject = {
+          burgers: dbBurgers,
+          customers: dbCustomers
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+      });
     });
   });
-
-
 };

@@ -26,6 +26,23 @@
       </div>
 
       <div class="card">
+        <div class="card-header">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Customer
+            </button>
+            <div class="dropdown-menu" id="customerMenu" aria-labelledby="dropdownMenuButton">
+              {{#each customers}}
+              <a class="dropdown-item" href="#">{{name}}</a>
+              {{/each}}
+              <!-- Text fields for customer -->
+            </div>
+          </div>
+          <div class="col mt-2">
+            <input id="customerSelected" placeholder="" type="text" disabled="disabled">
+          </div>
+        </div>
         <div class="card-body">
           <h5 class="card-title" id="add-burger-text">Add a Burger</h5>
           <div class="card-text">
